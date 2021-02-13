@@ -2,7 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 
 const dbname = process.env.DB_NAME;
-const dbhost = process.env.DB_Host;
+const dbhost = process.env.DB_HOST;
 const dbport = process.env.DB_PORT;
 mongoose.connect('mongodb://' + dbhost + ':' + dbport + '/' + dbname, {useNewUrlParser: true},
     (err) => {
