@@ -21,11 +21,10 @@ module.exports.DeletePerson = (req, res) => {
     }).then(r => res.send('OK'))
         .catch(err => res.send('error'))
 }
-module.exports.FindByName = (req, res) => {
+module.exports.FindByName = async (req, res) => {
     const name = req.query.name
-    Person.find({name: name})
-        .then(person => res.send(person))
-        .catch(err => res.send(err))
+    const person = await Person.find({name: name}).exec()
+    res.send(person)
 }
 
 module.exports.ListPerson = (req, res) => {
