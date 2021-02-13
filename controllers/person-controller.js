@@ -1,5 +1,12 @@
 const Person = require('../model/person')
 
+module.exports.FindByName = (req, res) => {
+    const name = req.body.name
+    Person.find({name: name})
+        .then(person => res.send(person))
+        .catch(err => res.send(err))
+}
+
 module.exports.ListPerson = (req, res) => {
     Person.find()
         .then(persons => res.send(persons))
