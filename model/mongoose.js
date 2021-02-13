@@ -1,5 +1,10 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true},
+
+const dbname = process.env.DB_NAME;
+const dbhost = process.env.DB_Host;
+const dbport = process.env.DB_PORT;
+mongoose.connect('mongodb://' + dbhost + ':' + dbport + '/' + dbname, {useNewUrlParser: true},
     (err) => {
         if (!err) {
             console.log('Successfully Established Connection with MongoDB')
