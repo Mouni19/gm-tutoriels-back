@@ -4,5 +4,5 @@ const router = express.Router();
 
 router.get('/persons', ListPerson)
 router.post('/addperson', AddPerson)
-router.post('/findbyname', FindByName)
+router.get('/findbyname', FindByName)
 module.exports = router;
