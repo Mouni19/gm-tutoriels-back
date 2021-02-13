@@ -1,5 +1,26 @@
 const Person = require('../model/person')
 
+module.exports.EditPerson = (req, res) => {
+    const newName = req.body.name
+    const newAge = req.body.age
+    const id = req.body.id
+    Person.updateOne({
+        '_id': id
+    }, {
+        '$set': {
+            name: newName,
+            age: newAge
+        }
+    }).then(r => res.send('OK'))
+        .catch(err => res.send('Not OK'))
+}
+module.exports.DeletePerson = (req, res) => {
+    const id = req.body.id
+    Person.remove({
+        '_id': id
+    }).then(r => res.send('OK'))
+        .catch(err => res.send('error'))
+}
 module.exports.FindByName = (req, res) => {
     const name = req.query.name
     Person.find({name: name})
