@@ -30,6 +30,7 @@ module.exports.FindByName = async (req, res) => {
 module.exports.ListPerson = (req, res) => {
     Person.find()
         .sort({age: 'asc'})
+        .limit(2)
         .then(persons => res.send(persons))
         .catch(err => res.send('[]'))
 }
